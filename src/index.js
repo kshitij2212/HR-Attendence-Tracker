@@ -1,5 +1,6 @@
 import express from "express";
 import authRoute from "./routes/auth.route.js";
+import employeeRoutes from "./routes/employeer.route.js";
 
 const app = express();
 const port = 3000;
@@ -7,6 +8,8 @@ const port = 3000;
 app.use(express.json())
 
 app.use("/auth", authRoute);
+app.use("/employees", employeeRoutes)
+
 
 
 
