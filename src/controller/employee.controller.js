@@ -24,18 +24,13 @@ const createEmployee = async(req,res)=>{
             email,
             password:hashedPassword,
             role,
-            departmentId
-        }
-    })
+            departmentId}})
 
-    return res.status(201).json({message:"Employee create successfully",employee})
-    
-    }   
+    return res.status(201).json({message:"Employee create successfully",employee})}   
 
     catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Server Error" });
-    }
+    return res.status(500).json({ message: "Server Error" })};
 
 
 }
