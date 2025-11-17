@@ -139,9 +139,26 @@ const deleteEmployee = async (req,res)=>{
 
 
 
+
 // Assign Department
-// Iska code Department table banane ke baad likhnege 
+
+const assignDepartment  = async(req,res)=>{
+    try{
+        const {id} = req.params
+        const {departmentId} = req.body
+
+        const employee = await prisma.employee.update({
+            where:{id:Number(id)},
+            data:{departmentId}
+        })
+        return res.status(200).json({message:"Department assigned successfully.",employee})
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({message:"Server Error"})
+    }
+}
 
 
 
-export {createEmployee,getAllEmployee,getEmployeebyId,updateEmployee,deleteEmployee};
+export {createEmployee,getAllEmployee,getEmployeebyId,updateEmployee,deleteEmployee,assignDepartment};
