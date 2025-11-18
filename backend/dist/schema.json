@@ -1,0 +1,540 @@
+{
+  "tables": {
+    "User": {
+      "name": "User",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "username": {
+          "name": "username",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "default": "employee",
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp(3)",
+          "default": "CURRENT_TIMESTAMP",
+          "notNull": true,
+          "comment": null,
+          "check": null
+        }
+      },
+      "comment": null,
+      "indexes": {
+        "User_pkey": {
+          "name": "User_pkey",
+          "unique": true,
+          "columns": [
+            "id"
+          ],
+          "type": ""
+        },
+        "User_username_key": {
+          "name": "User_username_key",
+          "unique": true,
+          "columns": [
+            "username"
+          ],
+          "type": ""
+        },
+        "User_email_key": {
+          "name": "User_email_key",
+          "unique": true,
+          "columns": [
+            "email"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {
+        "PRIMARY_id": {
+          "type": "PRIMARY KEY",
+          "name": "PRIMARY_id",
+          "columnNames": [
+            "id"
+          ]
+        },
+        "UNIQUE_username": {
+          "type": "UNIQUE",
+          "name": "UNIQUE_username",
+          "columnNames": [
+            "username"
+          ]
+        },
+        "UNIQUE_email": {
+          "type": "UNIQUE",
+          "name": "UNIQUE_email",
+          "columnNames": [
+            "email"
+          ]
+        }
+      }
+    },
+    "Employee": {
+      "name": "Employee",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "phone": {
+          "name": "phone",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "comment": null,
+          "check": null
+        },
+        "position": {
+          "name": "position",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "comment": null,
+          "check": null
+        },
+        "salary": {
+          "name": "salary",
+          "type": "double precision",
+          "default": null,
+          "notNull": false,
+          "comment": null,
+          "check": null
+        },
+        "departmentId": {
+          "name": "departmentId",
+          "type": "integer",
+          "default": null,
+          "notNull": false,
+          "comment": null,
+          "check": null
+        },
+        "userId": {
+          "name": "userId",
+          "type": "integer",
+          "default": null,
+          "notNull": false,
+          "comment": null,
+          "check": null
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp(3)",
+          "default": "CURRENT_TIMESTAMP",
+          "notNull": true,
+          "comment": null,
+          "check": null
+        }
+      },
+      "comment": null,
+      "indexes": {
+        "Employee_pkey": {
+          "name": "Employee_pkey",
+          "unique": true,
+          "columns": [
+            "id"
+          ],
+          "type": ""
+        },
+        "Employee_email_key": {
+          "name": "Employee_email_key",
+          "unique": true,
+          "columns": [
+            "email"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {
+        "PRIMARY_id": {
+          "type": "PRIMARY KEY",
+          "name": "PRIMARY_id",
+          "columnNames": [
+            "id"
+          ]
+        },
+        "UNIQUE_email": {
+          "type": "UNIQUE",
+          "name": "UNIQUE_email",
+          "columnNames": [
+            "email"
+          ]
+        },
+        "DepartmentToEmployee": {
+          "type": "FOREIGN KEY",
+          "name": "DepartmentToEmployee",
+          "columnNames": [
+            "departmentId"
+          ],
+          "targetTableName": "Department",
+          "targetColumnNames": [
+            "id"
+          ],
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
+    },
+    "Department": {
+      "name": "Department",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp(3)",
+          "default": "CURRENT_TIMESTAMP",
+          "notNull": true,
+          "comment": null,
+          "check": null
+        }
+      },
+      "comment": null,
+      "indexes": {
+        "Department_pkey": {
+          "name": "Department_pkey",
+          "unique": true,
+          "columns": [
+            "id"
+          ],
+          "type": ""
+        },
+        "Department_name_key": {
+          "name": "Department_name_key",
+          "unique": true,
+          "columns": [
+            "name"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {
+        "PRIMARY_id": {
+          "type": "PRIMARY KEY",
+          "name": "PRIMARY_id",
+          "columnNames": [
+            "id"
+          ]
+        },
+        "UNIQUE_name": {
+          "type": "UNIQUE",
+          "name": "UNIQUE_name",
+          "columnNames": [
+            "name"
+          ]
+        }
+      }
+    },
+    "Attendance": {
+      "name": "Attendance",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "date": {
+          "name": "date",
+          "type": "timestamp(3)",
+          "default": "CURRENT_TIMESTAMP",
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "employeeId": {
+          "name": "employeeId",
+          "type": "integer",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        }
+      },
+      "comment": null,
+      "indexes": {
+        "Attendance_pkey": {
+          "name": "Attendance_pkey",
+          "unique": true,
+          "columns": [
+            "id"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {
+        "PRIMARY_id": {
+          "type": "PRIMARY KEY",
+          "name": "PRIMARY_id",
+          "columnNames": [
+            "id"
+          ]
+        },
+        "AttendanceToEmployee": {
+          "type": "FOREIGN KEY",
+          "name": "AttendanceToEmployee",
+          "columnNames": [
+            "employeeId"
+          ],
+          "targetTableName": "Employee",
+          "targetColumnNames": [
+            "id"
+          ],
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
+    },
+    "Leave": {
+      "name": "Leave",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "startDate": {
+          "name": "startDate",
+          "type": "timestamp(3)",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "endDate": {
+          "name": "endDate",
+          "type": "timestamp(3)",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "default": "Pending",
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "employeeId": {
+          "name": "employeeId",
+          "type": "integer",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        }
+      },
+      "comment": null,
+      "indexes": {
+        "Leave_pkey": {
+          "name": "Leave_pkey",
+          "unique": true,
+          "columns": [
+            "id"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {
+        "PRIMARY_id": {
+          "type": "PRIMARY KEY",
+          "name": "PRIMARY_id",
+          "columnNames": [
+            "id"
+          ]
+        },
+        "EmployeeToLeave": {
+          "type": "FOREIGN KEY",
+          "name": "EmployeeToLeave",
+          "columnNames": [
+            "employeeId"
+          ],
+          "targetTableName": "Employee",
+          "targetColumnNames": [
+            "id"
+          ],
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
+    },
+    "Payroll": {
+      "name": "Payroll",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "month": {
+          "name": "month",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "amount": {
+          "name": "amount",
+          "type": "double precision",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        },
+        "paidOn": {
+          "name": "paidOn",
+          "type": "timestamp(3)",
+          "default": null,
+          "notNull": false,
+          "comment": null,
+          "check": null
+        },
+        "employeeId": {
+          "name": "employeeId",
+          "type": "integer",
+          "default": null,
+          "notNull": true,
+          "comment": null,
+          "check": null
+        }
+      },
+      "comment": null,
+      "indexes": {
+        "Payroll_pkey": {
+          "name": "Payroll_pkey",
+          "unique": true,
+          "columns": [
+            "id"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {
+        "PRIMARY_id": {
+          "type": "PRIMARY KEY",
+          "name": "PRIMARY_id",
+          "columnNames": [
+            "id"
+          ]
+        },
+        "EmployeeToPayroll": {
+          "type": "FOREIGN KEY",
+          "name": "EmployeeToPayroll",
+          "columnNames": [
+            "employeeId"
+          ],
+          "targetTableName": "Employee",
+          "targetColumnNames": [
+            "id"
+          ],
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
+    }
+  },
+  "enums": {},
+  "extensions": {}
+}
