@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/EmployeeManagement.css";
 import Sidebar from "./Sidebar";
 
 const EmployeeManagement = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [departmentFilter, setDepartmentFilter] = useState("");
   const [roleFilter, setRoleFilter] = useState("");
@@ -154,7 +156,11 @@ const EmployeeManagement = () => {
             </thead>
             <tbody>
               {employees.map((employee) => (
-                <tr key={employee.id}>
+                <tr
+                  key={employee.id}
+                  onClick={() => navigate(`/employees/${employee.id}`)}
+                  style={{ cursor: "pointer" }}
+                >
                   <td>
                     <div className="employee-name-cell">
                       <div className="employee-avatar-small">
