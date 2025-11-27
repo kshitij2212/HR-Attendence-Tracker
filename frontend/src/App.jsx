@@ -7,6 +7,7 @@ import {
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 import EmployeeManagement from "./components/EmployeeManagement";
+import EmployeesProfile from "./components/EmployeesProfile";
 import Login from "./components/Login";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/employees/:id" element={<EmployeesProfile />} />
         <Route path="/employees" element={<EmployeeManagement />} />
         <Route path="/" element={<Navigate to="/login" replace />} />
       </Routes>
