@@ -68,9 +68,9 @@ const MarkAttendance = () => {
     }
     const now = new Date();
     setCheckOutTime(now);
-    setErrorMessage("Attendance for today has already been marked.");
-    setSuccessMessage("");
-    setTimeout(() => setErrorMessage(""), 5000);
+    setSuccessMessage(`Checked out successfully at ${formatTime(now)}.`);
+    setErrorMessage("");
+    setTimeout(() => setSuccessMessage(""), 5000);
   };
 
   const getCreatedAt = () => {
