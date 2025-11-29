@@ -9,6 +9,7 @@ import Login from "./components/Login.jsx";
 // import Signup from "./components/Signup.jsx";
 import Dashboard from "./components/Dashboard.jsx";
 import Departments from "./components/DepartmentProfile.jsx";
+import MarkAttendance from "./components/MarkAttendance.jsx";
 import "./App.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           {/* <Route path="/signup" element={<Signup />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/departments" element={<Departments />} />
+          <Route path="/mark-attendance" element={<MarkAttendance />} />
         </Routes>
       </div>
     </Router>
@@ -28,5 +30,3 @@ function App() {
 }
 
 export default App;
-
-        
