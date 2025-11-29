@@ -1,27 +1,32 @@
+import React from "react";
 import {
-  Navigate,
-  Route,
   BrowserRouter as Router,
   Routes,
+  Route,
+  Navigate,
 } from "react-router-dom";
+import Login from "./components/Login.jsx";
+// import Signup from "./components/Signup.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import Departments from "./components/DepartmentProfile.jsx";
 import "./App.css";
-import Dashboard from "./components/Dashboard";
-import EmployeeManagement from "./components/EmployeeManagement";
-import EmployeesProfile from "./components/EmployeesProfile";
-import Login from "./components/Login";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/employees/:id" element={<EmployeesProfile />} />
-        <Route path="/employees" element={<EmployeeManagement />} />
-        <Route path="/" element={<Navigate to="/login" replace />} />
-      </Routes>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<Login />} />
+          {/* <Route path="/signup" element={<Signup />} /> */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/departments" element={<Departments />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
 
 export default App;
+
+        
