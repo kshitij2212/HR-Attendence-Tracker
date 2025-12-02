@@ -12,7 +12,7 @@ const app = express();
 const port = 3000;
 
 app.use(cors({
-    origin: ["http://localhost:5173", "https://hr-attendence-tracker-git-main-fuvs-projects.vercel.app"],
+    origin: ["http://localhost:5173", "https://hr-attendence-tracker-git-main-fuvs-projects.vercel.app", "https://hr-attendence-tracker.vercel.app"],
     credentials: true
 }));
 app.use(express.json())
