@@ -5,7 +5,7 @@ import {
   Routes,
 } from "react-router-dom";
 import Login from "./components/Login.jsx";
-// import Signup from "./components/Signup.jsx";
+import Register from "./components/Register.jsx";
 import "./App.css";
 import AttendanceRecords from "./components/AttendanceRecords.jsx";
 import Dashboard from "./components/Dashboard.jsx";
@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/signup" element={<Signup />} /> */}
+          <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/departments" element={<Departments />} />
           <Route path="/mark-attendance" element={<MarkAttendance />} />
