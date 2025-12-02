@@ -16,7 +16,7 @@ const checkIN = async (req,res)=>{
             }}
         });
         if(existing){
-            return res.status(400).json({message:"Attendence for today is already marked."})
+            return res.status(400).json({message:"Attendance for today is already marked."})
         }
 
         const checkInTime = new Date()
@@ -89,15 +89,15 @@ const checkOut = async (req,res)=>{
 }
 
 
-// Get AllAttendence
+// Get AllAttendance
 
-const getAllAttendence = async(req,res)=>{
+const getAllAttendance = async(req,res)=>{
     try{
-        const allAttendence = await prisma.attendance.findMany({
+        const allAttendance = await prisma.attendance.findMany({
             include:{employee:true}
         })
 
-        return res.status(200).json(allAttendence)
+        return res.status(200).json(allAttendance)
 
     }
     catch(error){
@@ -130,6 +130,6 @@ const getattendancebyId = async (req,res)=>{
 
 }
 
-export {checkIN,checkOut,getAllAttendence,getattendancebyId}
+export {checkIN,checkOut,getAllAttendance,getattendancebyId}
 
    
