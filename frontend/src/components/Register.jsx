@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Register.css";
 import axios from "axios";
@@ -15,16 +15,19 @@ const Register = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
 
-  const departments = [
-    "Engineering",
-    "Human Resources",
-    "Marketing",
-    "Sales",
-    "Finance",
-    "Operations",
-    "IT",
-    "Design",
-  ];
+  const [departments, setDepartments] = useState([]);
+
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/departments/public`);
+        setDepartments(response.data);
+      } catch (error) {
+        console.error("Error fetching departments:", error);
+      }
+    };
+    fetchDepartments();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -216,9 +219,10 @@ const Register = () => {
                 onChange={handleChange}
                 required
               >
+                <option value="">Select Department</option>
                 {departments.map((dept) => (
-                  <option key={dept} value={dept}>
-                    {dept}
+                  <option key={dept.id} value={dept.name}>
+                    {dept.name}
                   </option>
                 ))}
               </select>

@@ -111,4 +111,20 @@ const deleteDepartment = async (req,res)=>{
 
     };
 } ;
-export {createDepartment,getAllDepartment,getDepartmentbyID,deleteDepartment}
+// Get Public Departments (for registration)
+const getPublicDepartments = async (req, res) => {
+    try {
+        const departments = await prisma.department.findMany({
+            select: {
+                id: true,
+                name: true
+            }
+        });
+        return res.status(200).json(departments);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Server Error" });
+    }
+};
+
+export { createDepartment, getAllDepartment, getDepartmentbyID, deleteDepartment, getPublicDepartments };
