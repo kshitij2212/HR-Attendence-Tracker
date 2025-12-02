@@ -20,10 +20,17 @@ const Register = () => {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/departments/public`);
-        setDepartments(response.data);
+        const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+        const response = await axios.get(`${apiUrl}/departments/public`);
+        if (Array.isArray(response.data)) {
+            setDepartments(response.data);
+        } else {
+            console.error("Invalid departments data:", response.data);
+            setDepartments([]);
+        }
       } catch (error) {
         console.error("Error fetching departments:", error);
+        setDepartments([]);
       }
     };
     fetchDepartments();
